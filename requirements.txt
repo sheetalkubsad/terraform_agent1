@@ -1,0 +1,9 @@
+fastapi
+pydantic
+google-adk==1.20.0
+vertexai
+uvicorn
+google-cloud-aiplatform
+google-generativeai
+aiohttp
+github
