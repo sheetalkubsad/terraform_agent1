@@ -19,6 +19,15 @@ jobs:
         with:
           fetch-depth: 0   # Important for full branch history
 
+      - name: Check if PR already exists
+        run: |
+          if gh pr list --head ${{ github.ref_name }} --json number --jq '.[0].number' | grep .; then
+            echo "PR already exists for this branch. Skipping."
+            exit 0
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create Pull Request
         run: |
           gh pr create \
