@@ -40,8 +40,7 @@ jobs:
 
       - name: Push branch
         run: |
-          BRANCH=$(cat branch_name.txt)
-          git push origin $BRANCH
+          git push origin ${{ steps.create-branch.outputs.branch }}
 
       - name: Create PR
         uses: peter-evans/create-pull-request@v6
