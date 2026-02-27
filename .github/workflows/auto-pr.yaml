@@ -16,8 +16,8 @@ jobs:
         with:
           ref: main
       - name: Write Terraform file
-        run: >
-          cat << 'EOF' > main.tf ${{ github.event.client_payload.file_content }} EOF
+        run: |
+          printf "%s" "${{ github.event.client_payload.file_content }}" > main.tf
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
