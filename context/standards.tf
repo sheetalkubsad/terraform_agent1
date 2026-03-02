@@ -93,12 +93,9 @@ resource "google_bigquery_table" "table" {
   table_id            = var.tableId
   deletion_protection = !var.allowUpdate
 
-  dynamic "time_partitioning" {
-    for_each = var.timePartitionField != "" ? [1] : []
-    content {
+  "time_partitioning" {
       type  = "DAY"
       field = var.timePartitionField
-    }
   }
 }
 
