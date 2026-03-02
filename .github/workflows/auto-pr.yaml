@@ -15,9 +15,21 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-      - name: Decode Terraform  
+      - name: Process Terraform File
         run: |
-          echo "${{ github.event.client_payload.file_content }}" | base64 --decode >> main.tf
+          # Decode the content from the payload
+          DECODED_CONTENT=$(echo "${{ github.event.client_payload.file_content }}" | base64 --decode)
+          
+          if [ "${{ github.event.client_payload.operation }}" = "append" ]; then
+            echo "Operation: APPEND. Adding to main.tf"
+            # Add a newline first for safety, then append
+            echo "" >> main.tf
+            echo "$DECODED_CONTENT" >> main.tf
+          else
+            echo "Operation: UPDATE. Overwriting main.tf"
+            # Overwrite the entire file
+            echo "$DECODED_CONTENT" > main.tf
+          fi
       # Install Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
