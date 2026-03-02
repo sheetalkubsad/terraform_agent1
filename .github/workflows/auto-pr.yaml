@@ -15,9 +15,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-      - name: Decode Terraform
+      - name: Decode Terraform  
         run: |
-          echo "${{ github.event.client_payload.file_content }}" | base64 --decode > main.tf
+          echo "${{ github.event.client_payload.file_content }}" | base64 --decode >> main.tf
       # Install Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
