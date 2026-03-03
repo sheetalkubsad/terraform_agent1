@@ -51,3 +51,14 @@ resource "google_bigquery_dataset" "dataset" {
   default_table_expiration_ms = 7200000
   delete_contents_on_destroy  = false
 }
+
+resource "google_bigquery_table" "BigQueryTable" {
+  dataset_id          = google_bigquery_dataset.dataset.dataset_id
+  table_id            = "my_inventory_table"
+  deletion_protection = true
+
+  time_partitioning {
+    type  = "DAY"
+    field = "created_at"
+  }
+}
