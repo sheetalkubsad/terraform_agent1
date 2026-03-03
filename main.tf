@@ -51,3 +51,10 @@ resource "google_bigquery_dataset" "dataset" {
   default_table_expiration_ms = 7200000
   delete_contents_on_destroy  = false
 }
+
+resource "google_cloud_run_v2_service_iam_member" "invoker" {
+  location = google_cloud_run_v2_service.service.location
+  name     = google_cloud_run_v2_service.service.name
+  role     = "roles/run.invoker"
+  member   = "allAuthenticatedUsers"
+}
