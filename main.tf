@@ -44,3 +44,10 @@ resource "google_cloud_run_v2_service" "service" {
     prevent_destroy = true
   }
 }
+
+resource "google_bigquery_dataset" "dataset" {
+  dataset_id                  = "dataset1"
+  location                    = "US"
+  default_table_expiration_ms = 3600000
+  delete_contents_on_destroy  = false
+}
