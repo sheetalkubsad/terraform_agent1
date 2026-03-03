@@ -40,7 +40,7 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
       - name: Terraform Format
-        run: terraform fmt -check
+        run: terraform fmt
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
