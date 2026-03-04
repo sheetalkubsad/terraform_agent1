@@ -51,3 +51,27 @@ resource "google_bigquery_dataset" "dataset" {
   default_table_expiration_ms = 7200000
   delete_contents_on_destroy  = false
 }
+
+resource "google_cloud_run_v2_service" "CloudRunService" {
+  name     = "backend-api"
+  location = "us-central1"
+
+  template {
+    scaling {
+      max_instance_count = 10
+    }
+    containers {
+      image = "gcr.io/project/image:tag"
+      resources {
+        limits = {
+          cpu    = "1000m"
+          memory = "512Mi"
+        }
+      }
+    }
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
