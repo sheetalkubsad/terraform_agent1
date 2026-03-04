@@ -47,7 +47,7 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run:  terraform plan -refresh=false -no-color > plan.txt
+        run:  terraform plan -refresh=false -no-color
 
       - name: Create Pull Request
         id: cpr
