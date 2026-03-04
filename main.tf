@@ -13,3 +13,9 @@ provider "google" {
   region  = "us-central1"
 }
 
+
+resource "google_storage_bucket" "GoogleStorageBucket" {
+  name          = "my-bucket"
+  location      = "us-central1"
+  storage_class = "STANDARD"
+}
