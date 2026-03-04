@@ -1,3 +1,18 @@
+
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "google" {
+  project = "dummy-project"
+  region  = "us-central1"
+}
+
 resource "google_cloud_run_v2_service" "CloudRunApi" {
   name     = "cloud_run_api"
   location = "us-central1"
