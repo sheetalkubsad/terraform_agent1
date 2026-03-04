@@ -66,3 +66,14 @@ resource "google_bigquery_dataset" "dataset" {
   default_table_expiration_ms = 7200000
   delete_contents_on_destroy  = false
 }
+
+resource "google_storage_bucket" "GoogleStorageBucket" {
+  name          = "my-bucket"
+  location      = "us-central1"
+  storage_class = "STANDARD"
+  force_destroy = false
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
