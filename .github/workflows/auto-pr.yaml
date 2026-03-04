@@ -35,6 +35,11 @@ jobs:
         with:
           terraform_version: 1.6.6
 
+      - name: Set up GCP credentials
+        run: |
+          echo '${{ secrets.GCP_SA_KEY }}' > $HOME/gcp-sa-key.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcp-sa-key.json" >> $GITHUB_ENV
+
       - name: Terraform Init
         run: terraform init -backend=false
 
