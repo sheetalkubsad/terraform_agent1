@@ -13,3 +13,13 @@ provider "google" {
   region  = "us-central1"
 }
 
+
+module "ClourunService1" {
+  source = "git::https://github.com/sheetalkubsad/terraform-cloud-run-module.git?ref=main"
+
+  serviceName      = "ClourunService1"
+  containerImage   = "gcr.io/project/image:tag"
+  maxInstanceCount = 10
+  cpuLimit         = "1000m"
+  memoryLimit      = "512Mi"
+}
