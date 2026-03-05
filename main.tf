@@ -13,3 +13,12 @@ provider "google" {
   region  = "us-central1"
 }
 
+
+module "BigqueryDataset" {
+  source = "git::https://github.com/sheetalkubsad/terraform-bigquery-module.git?ref=main"
+
+  datasetId         = "dataset1"
+  dataLocation      = "us-central1"
+  allowUpdate       = false
+  tableExpirationMs = 3600000
+}
