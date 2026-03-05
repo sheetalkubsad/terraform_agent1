@@ -50,6 +50,9 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
+      - name: Terraform Format Check
+        run: terraform fmt 
+
       - name: Terraform Plan
         run:  terraform plan -refresh=false -no-color
 
