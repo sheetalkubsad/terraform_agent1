@@ -15,11 +15,10 @@ provider "google" {
 
 
 module "Service1" {
-  source = "git::https://github.com/sheetalkubsad/terraform-cloud-run-module.git?ref=main"
-
+  source           = "git::https://github.com/sheetalkubsad/terraform-cloud-run-module.git?ref=main"
   serviceName      = "service1"
   containerImage   = "gcr.io/project/image:tag"
-  maxInstanceCount = 10
+  maxInstanceCount = 20
   cpuLimit         = "1000m"
   memoryLimit      = "512Mi"
 }
