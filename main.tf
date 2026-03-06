@@ -13,3 +13,13 @@ provider "google" {
   region  = "us-central1"
 }
 
+
+module "cloudrunService1" {
+  source = "git::https://github.com/sheetalkubsad/terraform-cloud-run-module.git?ref=main"
+
+  serviceName      = "cloudRnsErive1"
+  containerImage   = "gcr.io"
+  maxInstanceCount = 10
+  cpuLimit         = "1000m"
+  memoryLimit      = "512Mi"
+}
