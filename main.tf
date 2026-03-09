@@ -23,3 +23,9 @@ module "cloudrunService1" {
   cpuLimit         = "1000m"
   memoryLimit      = "512Mi"
 }
+
+resource "google_bigquery_dataset" "BigqueryDataset" {
+  dataset_id                  = "dataset5"
+  location                    = "US"
+  default_table_expiration_ms = 3600000
+}
