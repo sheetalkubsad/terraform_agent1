@@ -23,3 +23,12 @@ module "cloudrunService1" {
   cpuLimit         = "1000m"
   memoryLimit      = "512Mi"
 }
+
+module "BigqueryDataset5" {
+  source = "git::https://github.com/sheetalkubsad/terraform-bigquery-module.git?ref=main"
+
+  datasetId         = "dataset5"
+  dataLocation      = "US"
+  allowUpdate       = false
+  tableExpirationMs = 3600000
+}
