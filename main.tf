@@ -23,3 +23,13 @@ module "cloudrunService1" {
   cpuLimit         = "1000m"
   memoryLimit      = "512Mi"
 }
+
+module "CloudRunApi4" {
+  source = "git::https://github.com/sheetalkubsad/terraform-cloud-run-module.git?ref=main"
+
+  serviceName      = "cloud_run_api4"
+  containerImage   = "gcr.io"
+  maxInstanceCount = 10
+  cpuLimit         = "1000m"
+  memoryLimit      = "512Mi"
+}
