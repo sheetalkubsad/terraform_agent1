@@ -23,3 +23,22 @@ module "cloudrunService1" {
   cpuLimit         = "1000m"
   memoryLimit      = "512Mi"
 }
+
+module "CloudRunApi2" {
+  source = "git::https://github.com/sheetalkubsad/terraform-cloud-run-module.git?ref=main"
+
+  serviceName      = "cloud_run_api2"
+  containerImage   = "gcr.io"
+  maxInstanceCount = 11
+  cpuLimit         = "1000m"
+  memoryLimit      = "512Mi"
+}
+
+module "Dataset7" {
+  source = "git::https://github.com/sheetalkubsad/terraform-bigquery-module.git?ref=main"
+
+  datasetId         = "dataset7"
+  dataLocation      = "US"
+  allowUpdate       = false
+  tableExpirationMs = 3600000
+}
