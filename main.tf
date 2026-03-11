@@ -23,3 +23,12 @@ module "cloudrunService1" {
   cpuLimit         = "1000m"
   memoryLimit      = "512Mi"
 }
+
+module "CloudRunServiceIamPolicy" {
+  source = "git::https://github.com/sheetalkubsad/terraform-cloud-run-iam-module.git?ref=main"
+
+  service_name = "cloudRnsErive1"
+  region       = "us-central1"
+  member       = "user:test-user@exampl.com"
+  environment  = "Development"
+}
