@@ -15,14 +15,14 @@ provider "google" {
 
 
 module "cloudrunService1" {
-  source = "git::https://github.com/sheetalkubsad/terraform-cloud-run-module.git?ref=main"
-
+  source           = "git::https://github.com/sheetalkubsad/terraform-cloud-run-module.git?ref=main"
   serviceName      = "cloudRnsErive1"
-  containerImage   = "gcr.io"
+  containerImage   = "gcr.io/myproject/api:v2.1"
   maxInstanceCount = 10
   cpuLimit         = "1000m"
   memoryLimit      = "512Mi"
 }
+
 
 module "CloudRunServiceIamPolicy" {
   source = "git::https://github.com/sheetalkubsad/terraform-cloud-run-iam-module.git?ref=main"
