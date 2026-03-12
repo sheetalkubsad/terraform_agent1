@@ -32,3 +32,13 @@ module "CloudRunServiceIamPolicy" {
   member       = "user:test-user@exampl.com"
   environment  = "Development"
 }
+
+module "MyAppCloudRunService" {
+  source = "git::https://github.com/sheetalkubsad/terraform-cloud-run-module.git?ref=main"
+
+  serviceName      = "my-app"
+  containerImage   = "gcr.io/my-project/my-image:latest"
+  maxInstanceCount = 12
+  cpuLimit         = "1000m"
+  memoryLimit      = "512Mi"
+}
