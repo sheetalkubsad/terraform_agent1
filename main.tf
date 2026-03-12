@@ -32,3 +32,17 @@ module "CloudRunServiceIamPolicy" {
   member       = "user:test-user@exampl.com"
   environment  = "Development"
 }
+
+module "dataset_dataset5" {
+  source = "git::https://github.com/sheetalkubsad/terraform-bigquery-module.git?ref=main"
+
+  datasetId    = "dataset5"
+  dataLocation = "us-east1"
+}
+
+module "dataset_dataset7" {
+  source = "git::https://github.com/sheetalkubsad/terraform-bigquery-module.git?ref=main"
+
+  datasetId    = "dataset7"
+  dataLocation = "us-west1"
+}
