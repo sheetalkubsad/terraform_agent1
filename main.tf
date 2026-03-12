@@ -32,3 +32,22 @@ module "CloudRunServiceIamPolicy" {
   member       = "user:test-user@exampl.com"
   environment  = "Development"
 }
+
+module "Dataset5" {
+  source = "git::https://github.com/sheetalkubsad/terraform-bigquery-module.git?ref=main"
+
+  datasetId         = "dataset5"
+  dataLocation      = "US"
+  allowUpdate       = false
+  tableExpirationMs = 3600000
+}
+
+module "CloudRun" {
+  source = "git::https://github.com/sheetalkubsad/terraform-cloud-run-module.git?ref=main"
+
+  serviceName      = "cloud_run"
+  containerImage   = "gcr.io/myproject/api:v2.1"
+  maxInstanceCount = 10
+  cpuLimit         = "1000m"
+  memoryLimit      = "512Mi"
+}
