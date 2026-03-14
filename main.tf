@@ -32,3 +32,31 @@ module "CloudRunServiceIamPolicy" {
   member       = "user:test-user@exampl.com"
   environment  = "Development"
 }
+
+
+module "Dataset1" {
+  source = "git::https://github.com/sheetalkubsad/terraform-bigquery-module.git?ref=main"
+
+  datasetId         = "dataset1"
+  dataLocation      = "us-east1"
+  allowUpdate       = false
+  tableExpirationMs = 7200000
+}
+
+module "Dataset2" {
+  source = "git::https://github.com/sheetalkubsad/terraform-bigquery-module.git?ref=main"
+
+  datasetId         = "dataset2"
+  dataLocation      = "us-west1"
+  allowUpdate       = false
+  tableExpirationMs = 3600000
+}
+
+module "Dataset4" {
+  source = "git::https://github.com/sheetalkubsad/terraform-bigquery-module.git?ref=main"
+
+  datasetId         = "dataset4"
+  dataLocation      = "us-central1"
+  allowUpdate       = false
+  tableExpirationMs = 3600000
+}
