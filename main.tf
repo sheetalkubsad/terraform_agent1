@@ -25,10 +25,9 @@ module "cloudrunService1" {
 }
 
 module "CloudRunServiceIamPolicy" {
-  source = "git::https://github.com/sheetalkubsad/terraform-cloud-run-iam-module.git?ref=main"
-
+  source       = "git::https://github.com/sheetalkubsad/terraform-cloud-run-iam-module.git?ref=main"
   service_name = "cloudRnsErive1"
-  region       = "us-central1"
+  region       = "us-east1"
   member       = "user:test-user@exampl.com"
   environment  = "Development"
 }
