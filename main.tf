@@ -32,3 +32,22 @@ module "CloudRunServiceIamPolicy" {
   member       = "user:test-user@exampl.com"
   environment  = "Development"
 }
+
+module "cloudRunApi" {
+  source = "git::https://github.com/sheetalkubsad/terraform-cloud-run-module.git?ref=main"
+
+  serviceName      = "cloud_run_api"
+  containerImage   = "us-central1-docker.pkg.dev/my-project/my-rep"
+  maxInstanceCount = 10
+  cpuLimit         = "1000m"
+  memoryLimit      = "512Mi"
+}
+
+module "paymentsData" {
+  source = "git::https://github.com/sheetalkubsad/terraform-bigquery-module.git?ref=main"
+
+  datasetId         = "payments_data"
+  dataLocation      = "us-central1"
+  allowUpdate       = false
+  tableExpirationMs = 3600000
+}
