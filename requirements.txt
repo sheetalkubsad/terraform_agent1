@@ -1,9 +1,12 @@
 fastapi
 pydantic
-google-adk==1.20.0
+pydantic-settings
+python-dotenv
+google-api-core>=2.0.0
 vertexai
 uvicorn
 google-cloud-aiplatform
 google-generativeai
-aiohttp
 github
+python-hcl2
+requests
