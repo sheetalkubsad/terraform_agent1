@@ -32,3 +32,13 @@ module "CloudRunServiceIamPolicy" {
   member       = "user:test-user@exampl.com"
   environment  = "Development"
 }
+
+
+module "PaymentsData" {
+  source = "git::https://github.com/sheetalkubsad/terraform-bigquery-module.git?ref=main"
+
+  datasetId         = "payments_data"
+  dataLocation      = "us-central1"
+  allowUpdate       = false
+  tableExpirationMs = 3600000
+}
